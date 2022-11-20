@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StringDrinkTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-11-20T21:10:37" hostname="sereno-VivoBook-ASUSLaptop-X512DA-F512DA" time="0.029">
+<testsuite name="StringDrinkTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-11-20T22:09:52" hostname="sereno-VivoBook-ASUSLaptop-X512DA-F512DA" time="0.027">
   <properties/>
-  <testcase name="stringReplacer()" classname="StringDrinkTest" time="0.023"/>
-  <testcase name="stringDrink()" classname="StringDrinkTest" time="0.001"/>
+  <testcase name="stringReplacer()" classname="StringDrinkTest" time="0.02"/>
+  <testcase name="stringDrink()" classname="StringDrinkTest" time="0.0"/>
   <testcase name="stringInverter()" classname="StringDrinkTest" time="0.001"/>
-  <testcase name="stringCaseChanger()" classname="StringDrinkTest" time="0.002"/>
+  <testcase name="stringRecipe()" classname="StringDrinkTest" time="0.003"/>
+  <testcase name="stringCaseChanger()" classname="StringDrinkTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

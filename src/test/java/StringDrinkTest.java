@@ -1,8 +1,13 @@
 import com.patterns.StringDrink;
+import com.patterns.StringRecipe;
 import com.patterns.transform.StringCaseChanger;
 import com.patterns.transform.StringInverter;
 import com.patterns.transform.StringReplacer;
+import com.patterns.transform.StringTransformer;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,5 +39,19 @@ public class StringDrinkTest {
         StringReplacer sr = new StringReplacer('A', 'X');
         sr.execute(drink);
         assertEquals("XBCDXBCD", drink.getText());
+    }
+    @Test
+    public void stringRecipe() {
+        StringDrink drink = new StringDrink( "AbCd-aBcD");
+        StringInverter si = new StringInverter();
+        StringCaseChanger cc = new StringCaseChanger();
+        StringReplacer sr = new StringReplacer('A', 'X');
+        List<StringTransformer> transformers = new ArrayList<>();
+        transformers.add(si);
+        transformers.add(cc);
+        transformers.add(sr);
+        StringRecipe recipe = new StringRecipe(transformers);
+        recipe.mix(drink);
+        assertEquals("dCbX-DcBa", drink.getText());
     }
 }

@@ -1,3 +1,5 @@
+package com.patterns;
+
 public class StringDrink {
     private String text;
     public StringDrink(String text) {

@@ -1,6 +1,9 @@
-package com.patterns;
+package com.patterns.Clients;
 
-public  class HumanClient implements Client{
+import com.patterns.*;
+import com.patterns.OrderingStrategy;
+
+public  class HumanClient implements Client {
     private OrderingStrategy strategy;
 
     public HumanClient(OrderingStrategy strategy) {

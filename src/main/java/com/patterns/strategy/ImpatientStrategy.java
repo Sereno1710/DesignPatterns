@@ -1,4 +1,9 @@
-package com.patterns;
+package com.patterns.strategy;
+
+import com.patterns.OrderingStrategy;
+import com.patterns.StringBar;
+import com.patterns.StringDrink;
+import com.patterns.StringRecipe;
 
 public class ImpatientStrategy implements OrderingStrategy {
 

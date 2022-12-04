@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StringDrinkTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-11-20T22:49:40" hostname="sereno-VivoBook-ASUSLaptop-X512DA-F512DA" time="0.036">
+<testsuite name="StringDrinkTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2022-12-04T17:28:40" hostname="sereno-VivoBook-ASUSLaptop-X512DA-F512DA" time="0.75">
   <properties/>
-  <testcase name="stringReplacer()" classname="StringDrinkTest" time="0.022"/>
-  <testcase name="transformUndo()" classname="StringDrinkTest" time="0.003"/>
-  <testcase name="stringDrink()" classname="StringDrinkTest" time="0.001"/>
-  <testcase name="stringInverter()" classname="StringDrinkTest" time="0.001"/>
-  <testcase name="transformerGroup()" classname="StringDrinkTest" time="0.001"/>
-  <testcase name="transformerComposite()" classname="StringDrinkTest" time="0.002"/>
-  <testcase name="stringRecipe()" classname="StringDrinkTest" time="0.001"/>
-  <testcase name="stringCaseChanger()" classname="StringDrinkTest" time="0.001"/>
+  <testcase name="happyHour()" classname="StringDrinkTest" time="0.039"/>
+  <testcase name="stringReplacer()" classname="StringDrinkTest" time="0.005"/>
+  <testcase name="impatientStrategy()" classname="StringDrinkTest" time="0.019"/>
+  <testcase name="transformUndo()" classname="StringDrinkTest" time="0.002"/>
+  <testcase name="stringDrink()" classname="StringDrinkTest" time="0.002"/>
+  <testcase name="removeObserver()" classname="StringDrinkTest" time="0.628"/>
+  <testcase name="smartStrategyStartClosed()" classname="StringDrinkTest" time="0.003"/>
+  <testcase name="stringInverter()" classname="StringDrinkTest" time="0.002"/>
+  <testcase name="smartStrategyStartOpened()" classname="StringDrinkTest" time="0.002"/>
+  <testcase name="addObserver()" classname="StringDrinkTest" time="0.013"/>
+  <testcase name="transformerGroup()" classname="StringDrinkTest" time="0.003"/>
+  <testcase name="transformerComposite()" classname="StringDrinkTest" time="0.003"/>
+  <testcase name="stringRecipe()" classname="StringDrinkTest" time="0.002"/>
+  <testcase name="stringCaseChanger()" classname="StringDrinkTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

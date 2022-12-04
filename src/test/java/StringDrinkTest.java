@@ -1,16 +1,12 @@
-import com.patterns.StringDrink;
-import com.patterns.StringRecipe;
-import com.patterns.StringTransformerGroup;
-import com.patterns.transform.StringCaseChanger;
-import com.patterns.transform.StringInverter;
-import com.patterns.transform.StringReplacer;
-import com.patterns.transform.StringTransformer;
+import com.patterns.*;
+import com.patterns.Strings.transform.*;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StringDrinkTest {
     @Test
@@ -106,5 +102,87 @@ public class StringDrinkTest {
         StringRecipe recipe = new StringRecipe(transformers3);
         recipe.mix(drink);
         assertEquals("DcBx-dCbA", drink.getText());
+    }
+    @Test
+    public void happyHour() {
+        Bar bar = new StringBar();
+        assertFalse(bar.isHappyHour());
+        bar.startHappyHour();
+        assertTrue(bar.isHappyHour());
+        bar.endHappyHour();
+        assertFalse(bar.isHappyHour());
+    }
+    @Test
+    public void addObserver() {
+        Bar bar = new StringBar();
+        HumanClient clientMock = Mockito.mock(HumanClient.class);
+        bar.addObserver(clientMock);
+        Mockito.verify(clientMock, Mockito.never()).happyHourStarted(bar);
+        Mockito.verify(clientMock, Mockito.never()).happyHourEnded(bar);
+        bar.startHappyHour();
+        Mockito.verify(clientMock, Mockito.times(1)).happyHourStarted(bar);
+        Mockito.verify(clientMock, Mockito.never()).happyHourEnded(bar);
+        bar.endHappyHour();
+        Mockito.verify(clientMock, Mockito.times(1)).happyHourStarted(bar);
+        Mockito.verify(clientMock, Mockito.times(1)).happyHourEnded(bar);
+    }
+    @Test
+    public void removeObserver() {
+        Bar bar = new StringBar();
+        HumanClient clientMock = Mockito.mock(HumanClient.class);
+        bar.addObserver(clientMock);
+        bar.removeObserver(clientMock);
+        bar.startHappyHour();
+        bar.endHappyHour();
+        Mockito.verify(clientMock, Mockito.never()).happyHourStarted(bar);
+        Mockito.verify(clientMock, Mockito.never()).happyHourEnded(bar);
+    }
+    private StringRecipe getRecipe() {
+        StringInverter si = new StringInverter();
+        StringCaseChanger cc = new StringCaseChanger();
+        StringReplacer sr = new StringReplacer('A', 'X');
+
+        List<StringTransformer> transformers = new ArrayList<>();
+        transformers.add(si);
+        transformers.add(cc);
+        transformers.add(sr);
+
+        StringRecipe recipe = new StringRecipe(transformers);
+        return recipe;
+    }
+    @Test
+    public void impatientStrategy() {
+        StringBar stringBar = new StringBar();
+        StringDrink drink = new StringDrink("AbCd-aBcD");
+        StringRecipe recipe = getRecipe();
+        ImpatientStrategy strategy = new ImpatientStrategy();
+        HumanClient client = new HumanClient(strategy);
+        client.wants(drink, recipe, stringBar);
+        assertEquals("dCbX-DcBa", drink.getText());
+    }
+    @Test
+    public void smartStrategyStartOpened() {
+        StringBar stringBar = new StringBar();
+        StringDrink drink = new StringDrink("AbCd-aBcD");
+        StringRecipe recipe = getRecipe();
+        SmartStrategy strategy = new SmartStrategy();
+        HumanClient client = new HumanClient(strategy);
+        stringBar.startHappyHour();
+        client.wants(drink, recipe, stringBar);
+        assertEquals("dCbX-DcBa", drink.getText());
+    }
+    @Test
+    public void smartStrategyStartClosed() {
+        StringBar stringBar = new StringBar();
+        StringDrink drink = new StringDrink("AbCd-aBcD");
+        StringRecipe recipe = getRecipe();
+        SmartStrategy strategy = new SmartStrategy();
+        HumanClient client = new HumanClient(strategy);
+        stringBar.addObserver(client); // this is important!
+        client.wants(drink, recipe, stringBar);
+        assertEquals("AbCd-aBcD", drink.getText());
+
+        stringBar.startHappyHour();
+        assertEquals("dCbX-DcBa", drink.getText());
     }
 }

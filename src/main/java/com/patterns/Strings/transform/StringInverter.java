@@ -1,7 +1,6 @@
-package com.patterns.transform;
+package com.patterns.Strings.transform;
 
 import com.patterns.StringDrink;
-import com.patterns.transform.StringTransformer;
 
 public class StringInverter implements StringTransformer {
     @Override

@@ -1,4 +1,4 @@
-package com.patterns.transform;
+package com.patterns.Strings.transform;
 
 import com.patterns.StringDrink;
 

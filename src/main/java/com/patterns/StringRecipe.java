@@ -1,6 +1,6 @@
 package com.patterns;
 
-import com.patterns.transform.StringTransformer;
+import com.patterns.Strings.transform.StringTransformer;
 
 import java.util.List;
 
